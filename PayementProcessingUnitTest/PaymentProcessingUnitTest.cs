@@ -17,8 +17,11 @@ namespace PayementProcessingUnitTest
             // 
             var result = PaymentProcessor.UserInputToProductType(new string[] { "video", "Learning to Ski" });
             Assert.AreEqual("Learning to Ski", result.ProductName);
-            Assert.AreEqual("Generating packing slip for nonphysical product", result.ActionStatus);
-            Assert.AreEqual(1, result.ActionStatus.Count);
+            Assert.AreEqual("Packing slip generated for shipping.", result.ActionStatus);
+       
         }
+
+        
+
     }
 }
