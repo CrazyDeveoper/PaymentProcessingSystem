@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PayementProcessingSystem;
+using PaymentProcessingSystem;
 
 namespace PayementProcessingUnitTest
 {
@@ -11,8 +11,14 @@ namespace PayementProcessingUnitTest
         { 
         }
         [TestMethod]
-        public void Test_NonPhysicalProduct()
-        { 
+        public void Test_NonPhysicalProduct_Video()
+        {
+            //input will be 1. Product Type =video,membership,upgrade , 2. Product name which is nullable
+            // 
+            var result = PaymentProcessor.UserInputToProductType(new string[] { "video", "Learning to Ski" });
+            Assert.AreEqual("Learning to Ski", result.ProductName);
+            Assert.AreEqual("Generating packing slip for nonphysical product", result.ActionStatus);
+            Assert.AreEqual(1, result.ActionStatus.Count);
         }
     }
 }
