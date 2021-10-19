@@ -56,6 +56,22 @@ namespace PayementProcessingUnitTest
             Assert.AreEqual(3, result.ActionStatus.Count);
         }
 
+        [TestMethod]
+        public void Test_Membership_Activate_Upgrade()
+        {
+            var result = PaymentProcessor.UserInputToProductType(new string[] { "Membership", "" });
+            Assert.AreEqual("N/A", result.ProductName);
+            Assert.AreEqual("Generating packing slip for nonphysical product", result.ActionStatus[0]);
+            Assert.AreEqual("Membership activated.", result.ActionStatus[1]);
+            Assert.AreEqual("Mail sent to owner", result.ActionStatus[2]);
+            Assert.AreEqual(3, result.ActionStatus.Count);
 
+            var result2 = PaymentProcessor.UserInputToProductType(new string[] { "Upgrade", "" });
+            Assert.AreEqual("N/A", result.ProductName);
+            Assert.AreEqual("Generating packing slip for nonphysical product", result2.ActionStatus[0]);
+            Assert.AreEqual("Membership upgraded.", result2.ActionStatus[1]);
+            Assert.AreEqual("Mail sent to owner", result2.ActionStatus[2]);
+            Assert.AreEqual(3, result2.ActionStatus.Count);
+        }
     }
 }
