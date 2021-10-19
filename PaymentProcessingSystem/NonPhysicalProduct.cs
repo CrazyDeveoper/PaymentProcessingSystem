@@ -9,7 +9,6 @@ namespace PaymentProcessingSystem
         public override void GeneratePackingSlip()
         {
             Console.WriteLine("Generating packing slip for nonphysical product");
-
             ActionStatus.Add("Packing slip generated for shipping.");
            
         }

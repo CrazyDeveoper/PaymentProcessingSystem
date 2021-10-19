@@ -6,10 +6,7 @@ namespace PayementProcessingUnitTest
     [TestClass]
     public class PaymentProcessingUnitTest
     {
-        [TestMethod]
-        public void Test_PhysicalProduct()
-        {
-        }
+
         [TestMethod]
         public void Test_NonPhysicalProduct_Video()
         {
@@ -19,14 +16,12 @@ namespace PayementProcessingUnitTest
             Assert.AreEqual("Learning to Ski", result.ProductName);
             Assert.AreEqual("Packing slip generated for shipping.", result.ActionStatus[0]);
             Assert.AreEqual("'First Aid' video added to the packing slip.", result.ActionStatus[1]);
-            
+
             Assert.AreEqual(2, result.ActionStatus.Count);
         }
         [TestMethod]
         public void Test_NonPhysicalProduct_VideoWithoutName()
         {
-            //input will be 1. Product Type =video,membership,upgrade , 2. Product name which is nullable
-            // 
             var result = PaymentProcessor.UserInputToProductType(new string[] { "video", "" });
             Assert.AreEqual("N/A", result.ProductName);
             Assert.AreEqual("Packing slip generated for shipping.", result.ActionStatus[0]);
@@ -36,7 +31,6 @@ namespace PayementProcessingUnitTest
         [TestMethod]
         public void Test_GeneratePackingSlipForBook()
         {
-
             var result = PaymentProcessor.UserInputToProductType(new string[] { "Book", "" });
             Assert.AreEqual("N/A", result.ProductName);
             Assert.AreEqual("Packing slip generated for shipping.", result.ActionStatus[0]);

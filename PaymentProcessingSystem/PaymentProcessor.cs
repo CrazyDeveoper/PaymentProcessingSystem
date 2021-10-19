@@ -47,7 +47,7 @@ namespace PaymentProcessingSystem
                 case ProductTypes.Other:
                 default:
                     {
-                        productDetails = null;
+                        
                         Console.WriteLine("Nothing to handle in defult case.");
                         break;
                     }
