@@ -42,4 +42,29 @@ namespace PaymentProcessingSystem
         }
     }
 
+    class Membership : NonPhysicalProduct
+    {
+        public Membership(string name)
+        {
+            ProductName = name != "" ? name : "N/A";
+            ActionStatus = new List<string>();
+            base.GeneratePackingSlip();
+            ActionStatus.Add("Membership activated.");
+            Console.WriteLine("Activating membership.");
+            base.SendMail();
+        }
+    }
+    class Upgrade : NonPhysicalProduct
+    {
+        public Upgrade(string name)
+        {
+            ProductName = name != "" ? name : "N/A";
+            ActionStatus = new List<string>();
+            base.GeneratePackingSlip();
+            ActionStatus.Add("Membership upgraded.");
+            Console.WriteLine("Upgrading membership.");
+            base.SendMail();
+        }
+    }
+
 }

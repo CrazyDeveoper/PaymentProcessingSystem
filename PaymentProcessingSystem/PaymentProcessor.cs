@@ -34,6 +34,16 @@ namespace PaymentProcessingSystem
                         productDetails = new Book(name);
                         break;
                     }
+                case ProductTypes.Membership:
+                    {
+                        productDetails = new Membership(name);
+                        break;
+                    }
+                case ProductTypes.Upgrade:
+                    {
+                        productDetails = new Upgrade(name);
+                        break;
+                    }
                 case ProductTypes.Other:
                 default:
                     {
