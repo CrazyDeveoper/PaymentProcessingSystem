@@ -20,6 +20,15 @@ namespace PayementProcessingUnitTest
             Assert.AreEqual("Packing slip generated for shipping.", result.ActionStatus[0]);
             Assert.AreEqual(2, result.ActionStatus);
         }
+        public void Test_NonPhysicalProduct_VideoWithoutName()
+        {
+            //input will be 1. Product Type =video,membership,upgrade , 2. Product name which is nullable
+            // 
+            var result = PaymentProcessor.UserInputToProductType(new string[] { "video", "" });
+            Assert.AreEqual("N/A", result.ProductName);
+            Assert.AreEqual("Packing slip generated for shipping.", result.ActionStatus[0]);
+            Assert.AreEqual(2, result.ActionStatus);
+        }
 
         [TestMethod]
         public void Test_GeneratePackingSlipForBook()
