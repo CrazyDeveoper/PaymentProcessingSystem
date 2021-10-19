@@ -17,8 +17,8 @@ namespace PayementProcessingUnitTest
             // 
             var result = PaymentProcessor.UserInputToProductType(new string[] { "video", "Learning to Ski" });
             Assert.AreEqual("Learning to Ski", result.ProductName);
-            Assert.AreEqual("Packing slip generated for shipping.", result.ActionStatus);
-
+            Assert.AreEqual("Packing slip generated for shipping.", result.ActionStatus[0]);
+            Assert.AreEqual(2, result.ActionStatus);
         }
 
         [TestMethod]
@@ -30,7 +30,7 @@ namespace PayementProcessingUnitTest
             Assert.AreEqual("Packing slip generated for shipping.", result.ActionStatus[0]);
             Assert.AreEqual("Added commission payment to the agent.", result.ActionStatus[1]);
             Assert.AreEqual("Created a duplicate packing slip for the royalty department.", result.ActionStatus[2]);
-            Assert.AreEqual(3, result.ActionStatus);
+            Assert.AreEqual(3, result.ActionStatus.Count);
         }
 
     }

@@ -4,10 +4,11 @@ using System.Text;
 
 namespace PaymentProcessingSystem
 {
-    public class ProductDetails
+    //base properties and methods for product
+    public abstract class ProductDetails
     {
         public string ProductName { get; set; }
-        public string ActionStatus { get; set; }
-    
+        public List<string> ActionStatus { get; set; }
+        public abstract void GeneratePackingSlip();
     }
 }

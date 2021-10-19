@@ -9,6 +9,7 @@ namespace PaymentProcessingSystem
         public static ProductDetails UserInputToProductType(string[] input)
         {
             ProductTypes type;
+            ProductDetails productDetails;
             try
             {
                 type = (ProductTypes)Enum.Parse(typeof(ProductTypes), input[0], ignoreCase: true);
@@ -19,13 +20,34 @@ namespace PaymentProcessingSystem
                 type = ProductTypes.Other;
             }
             string name = input.Length > 1 ? string.Join(' ', input, 1, input.Length - 1) : string.Empty;
-            ProductDetails productDetails = new ProductDetails();
-            productDetails.ProductName = name;
-            productDetails.ActionStatus = "Packing slip generated for shipping.";
 
+            switch (type)
+            {
+
+                case ProductTypes.Video:
+                    {
+                        productDetails = new Video(name);
+                        break;
+                    }
+                case ProductTypes.Book:
+                    {
+                        productDetails = new Book(name);
+                        break;
+                    }
+                case ProductTypes.Other:
+                default:
+                    {
+                        productDetails = null;
+                        Console.WriteLine("Nothing to handle in defult case.");
+                        break;
+                    }
+                  
+                    
+            }
 
             return productDetails;
         }
+
     }
     public enum ProductTypes
     {
@@ -35,4 +57,5 @@ namespace PaymentProcessingSystem
         Book,
         Other
     }
+    
 }
